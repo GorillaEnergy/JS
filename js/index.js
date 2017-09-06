@@ -167,7 +167,7 @@
         addPhone.addEventListener('click', function () {
             somePhoneNumerator++;
             let somePhone = "Phone" + somePhoneNumerator;
-            console.log(somePhone);
+            // console.log(somePhone);
 
             let newInput = doc.createElement('input');
             newInput.id = somePhone;
@@ -182,7 +182,7 @@
         let removePhone = doc.getElementById('removePhone');
         removePhone.addEventListener('click', function () {
             if (somePhoneNumerator>1){
-            console.log(somePhoneNumerator);
+            // console.log(somePhoneNumerator);
             let tmpRemovePhone = doc.getElementById("Phone"+somePhoneNumerator);
             tmpRemovePhone.remove();
             somePhoneNumerator--;
@@ -195,7 +195,7 @@
         addMail.addEventListener('click', function () {
             someMailNumerator++;
             let someMail = "Mail" + someMailNumerator;
-            console.log(someMail);
+            // console.log(someMail);
 
             let newInput = doc.createElement('input');
             newInput.id = someMail;
@@ -209,7 +209,7 @@
         let removeMail = doc.getElementById('removeMail');
         removeMail.addEventListener('click', function () {
             if (someMailNumerator>1){
-                console.log(someMailNumerator);
+                // console.log(someMailNumerator);
                 let tmpRemoveMail = doc.getElementById("Mail"+someMailNumerator);
                 tmpRemoveMail.remove();
                 someMailNumerator--;
@@ -220,9 +220,9 @@
     //ДЕЙСТВИЯ ПО НАЖАТИЮ НА КОНТАКТ
     // console.log(control);
     if (control !== null) {
-        for ( var i=0; i<control.length; i++) {
-            let tmpCallBlock = control[i];
-            let tmpID = doc.getElementById(tmpCallBlock);
+        for ( let i=0; i<control.length; i++) {
+            let tmpCallBlock = control[i];  //controlKey[i]
+            let tmpID = doc.getElementById(tmpCallBlock);  //id тот же что и controlKey[i]
             let tmpCount = i;
             tmpID.addEventListener('click', function () {
                 var tmpArrReCall = JSON.parse(localStorage.getItem(tmpCallBlock));
@@ -434,27 +434,30 @@
                 deleteContact.addEventListener('click', function () {
                     localStorage.removeItem(tmpCallBlock);
                     let tmpCK = JSON.parse(localStorage.getItem('controlKey'));
-                    console.log(tmpCount);
-                    console.log(tmpCK);
-                    tmpCK.splice(tmpCount, 1);
-                    console.log(tmpCK);
+                        console.log('Массив из lS controlKey ['+tmpCK +']');
+                    tmpCK.splice(tmpCount, 1);  //удаляем элемент массива
+                        console.log('Удаляемый элемент '+tmpCallBlock);
+                        console.log('Массив после удаления элемента ['+tmpCK+']');
+                        console.log('Длина массива '+tmpCK.length);
                     localStorage.setItem('controlKey', JSON.stringify(tmpCK));
+                    if (tmpCK.length === 1) {
+                        localStorage.removeItem("controlKey");
+                            console.log('ControlKey removed');
+                    };
 
                     let child = doc.getElementById(tmpCallBlock);
                     parent_block.removeChild(child);
                     closeW.remove();
                     closeB.remove();
-                    if (control.length = 1) {
-                        localStorage.removeItem('controlKey');
-                    };
                 });
+
                 //ДЕЙСТВИЯ ПО КНОПКЕ [+] Phone
                 let addPhone = doc.getElementById('addPhone');
                 let SomePhoneNumerator2 = tmpArrReCall.phone.length;
                 addPhone.addEventListener('click', function () {
                     SomePhoneNumerator2++;
                     let somePhone = "phone" + SomePhoneNumerator2;
-                    console.log(somePhone);
+                    // console.log(somePhone);
 
                     let newInput = doc.createElement('input');
                     newInput.id = somePhone;
@@ -469,7 +472,7 @@
                 let removePhone = doc.getElementById('removePhone');
                 removePhone.addEventListener('click', function () {
                     if (SomePhoneNumerator2>1){
-                        console.log(SomePhoneNumerator2);
+                        // console.log(SomePhoneNumerator2);
                         let tmpRemovePhone = doc.getElementById("phone"+SomePhoneNumerator2);
                         tmpRemovePhone.remove();
                         SomePhoneNumerator2--;
@@ -482,7 +485,7 @@
                 addMail.addEventListener('click', function () {
                     SomeMailNumerator2++;
                     let someMail = "mail" + SomeMailNumerator2;
-                    console.log(someMail);
+                    // console.log(someMail);
 
                     let newInput = doc.createElement('input');
                     newInput.id = someMail;
@@ -496,7 +499,7 @@
                 let removeMail = doc.getElementById('removeMail');
                 removeMail.addEventListener('click', function () {
                     if (SomeMailNumerator2 > 1) {
-                        console.log(SomeMailNumerator2);
+                        // console.log(SomeMailNumerator2);
                         let tmpRemoveMail = doc.getElementById("mail" + SomeMailNumerator2);
                         tmpRemoveMail.remove();
                         SomeMailNumerator2--;
