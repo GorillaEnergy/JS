@@ -40,11 +40,11 @@
                     <button class="close" type="button" id="close">Close</button>\
                 </div>\
                 <div class="clearfix">\
-                    <input required placeholder="Name" class="input_zone" id="name">\
+                    <input required placeholder="Name" class="input_zone" id="name" autofocus>\
                     <input required placeholder="Lastname" class="input_zone" id="lastname">\
                 </div>\
                 <div class="clearfix" id="inputPhone">\
-                    <input type="tel" pattern="[0-9]{5,10}" name="phone" class="input_zone" placeholder="Phone" id="phone">\
+                    <input type="tel" oninput="this.value = this.value.replace (/\\D/, \'\')" name="phone" class="input_zone" placeholder="Phone" id="phone">\
                     <button class="new_phone_mail" type="button" id="addPhone">+</button>\
                     <button class="new_phone_mail" type="button" id="removePhone">-</button>\
                 </div>\
@@ -173,6 +173,7 @@
             newInput.id = somePhone;
             newInput.placeholder = somePhone;
             newInput.className = 'input_zone';
+            newInput.oninput = function () {this.value = this.value.replace (/\D/, '')};
             newInput.innerHTML = '<input type="tel" name="phone">';
             inputPhone.appendChild(newInput);
         });
@@ -213,7 +214,7 @@
                 tmpRemoveMail.remove();
                 someMailNumerator--;
             }
-        })
+        });
     });
 
     //ДЕЙСТВИЯ ПО НАЖАТИЮ НА КОНТАКТ
@@ -276,7 +277,8 @@
                 firsPhone.id = 'phone';
                 firsPhone.className = 'input_zone';
                 firsPhone.placeholder = 'Phone';
-                firsPhone.innerHTML = '<input type="tel" name="phone">';
+                firsPhone.oninput = function () {this.value = this.value.replace (/\D/, '')};
+                firsPhone.innerHTML = '<input type="tel" name="phone"  oninput="this.value = this.value.replace (/\\D/, \'\')">';
                 inputPhone.appendChild(firsPhone);
                 //ButtonZone
                 let buttonPhoneAdd = doc.createElement('button');
@@ -301,6 +303,7 @@
                         anothetPhone.value = tmpArrReCall.phone[i];
                         anothetPhone.id = 'phone' + (i+1);
                         anothetPhone.placeholder = 'Phone'+ (i+1);
+                        anothetPhone.oninput = function () {this.value = this.value.replace (/\D/, '')};
                         anothetPhone.innerHTML = '<input type="tel" name="phone">';
                         inputPhone.appendChild(anothetPhone);
                     }
@@ -441,6 +444,9 @@
                     parent_block.removeChild(child);
                     closeW.remove();
                     closeB.remove();
+                    if (control.length = 1) {
+                        localStorage.removeItem('controlKey');
+                    };
                 });
                 //ДЕЙСТВИЯ ПО КНОПКЕ [+] Phone
                 let addPhone = doc.getElementById('addPhone');
@@ -454,6 +460,7 @@
                     newInput.id = somePhone;
                     newInput.placeholder = somePhone;
                     newInput.className = 'input_zone';
+                    newInput.oninput = function () {this.value = this.value.replace (/\D/, '')};    //------------------------------
                     newInput.innerHTML = '<input type="tel" name="phone">';
                     inputPhone.appendChild(newInput);
                 });
