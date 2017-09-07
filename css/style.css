@@ -19,10 +19,11 @@
     box-sizing: border-box;
     width: 100%;
     background-color: darkgrey;
-    border: 1px solid #4b4b4b;
+    /*border: 1px solid #4b4b4b;*/
     position: relative;
 }
 .input_zone {
+    border-radius: 5px;
     width: 250px;
     height: 40px;
     font-size: 20px;
@@ -30,25 +31,42 @@
     margin: 10px 10px;
 }
 .add_contact {
-    border-radius: 10px;
+    position: relative;
+    border-radius: 5px;
     background-color: white;
     float: right;
     width: 65px;
     height: 40px;
     margin: 10px 10px;
 }
+.serch_label {
+    position: absolute;
+}
 .my-message {
     width: 100%;
     box-sizing: border-box;
     height: 50px;
-    border: 1px solid #4b4b4b;
-    background-color: darkgrey;
+    border: 1px solid #797777;
+    background-color: #4b4b4b;
     margin-top: -1px;
 }
 .my-message-title {
+    color: #eaeaea;
     font-size: 30px;
-    margin: 0 5px 0 10px;
+    margin: 6px 0 0 10px;
+    font-family: "Arial";
 }
+.my-message:hover {
+    background-color: #797777;
+    border-radius: 5px;
+}
+
+.my-message-title span {
+    vertical-align: middle;
+}
+/*.my-message-title:hover {*/
+    /*color: #232323;*/
+/*}*/
 /*   ADD   */
 .backing {
     width: 100%;
@@ -76,29 +94,34 @@
     width: 100%;
 }
 .del {
-    width: 75px;
+    width: 40px;
     height: 40px;
-    background-color: #a40000;
+    border-radius: 5px;
+    /*background-color: #a40000;*/
     font-size: 20px;
     margin: 5px 5px;
     float: left;
 }
 .close {
-    width: 70px;
+    width: 100px;
     height: 40px;
+    border-radius: 5px;
     font-size: 20px;
     margin: 5px 5px;
     float: right;
 }
 .save {
-    width: 70px;
+    width: 100px;
     height: 40px;
+    border-radius: 5px;
     font-size: 20px;
     margin: 5px 5px;
     float: right;
 }
 .new_phone_mail {
+    border-radius: 5px;
     margin: 11px 0 9px 5px;
     width: 33px;
     height: 45px;
+    font-size: 25px;
 }

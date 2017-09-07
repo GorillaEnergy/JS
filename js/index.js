@@ -18,7 +18,7 @@
                 // console.log(getls);
                 let addNewContact = doc.createElement('div');
                 addNewContact.id = tmpi;
-                addNewContact.innerHTML = '<div class="my-message"><span class="my-message-title">'+getls.lastname +' '+ getls.name +'</span></div>';
+                addNewContact.innerHTML = '<div class="my-message"><p class="my-message-title">'+getls.lastname +' '+ getls.name +'</p></div>';
                 parent_block.appendChild(addNewContact);
             }
         } else {
@@ -36,8 +36,8 @@
         let contactProfile = doc.createElement('div');
         contactProfile.innerHTML = '<div class="main_new_contact_block clearfix" id="newContact">\
                 <div class="Del_Close_Save clearfix">\
-                    <button class="save" type="button" id="save">Save</button>\
-                    <button class="close" type="button" id="close">Close</button>\
+                    <button class="save" type="button" id="save">Save <i class="fa fa-check" aria-hidden="true"></i></button>\
+                    <button class="close" type="button" id="close">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>\
                 </div>\
                 <div class="clearfix">\
                     <input required placeholder="Name" class="input_zone" id="name" autofocus>\
@@ -220,10 +220,10 @@
     //ДЕЙСТВИЯ ПО НАЖАТИЮ НА КОНТАКТ
     // console.log(control);
     if (control !== null) {
-        for ( let i=0; i<control.length; i++) {
-            let tmpCallBlock = control[i];  //controlKey[i]
+        for ( let m=0; m<control.length; m++) {
+            let tmpCallBlock = control[m];  //controlKey[i]
             let tmpID = doc.getElementById(tmpCallBlock);  //id тот же что и controlKey[i]
-            let tmpCount = i;
+            let tmpCount = m;
             tmpID.addEventListener('click', function () {
                 var tmpArrReCall = JSON.parse(localStorage.getItem(tmpCallBlock));
 
@@ -235,9 +235,9 @@
                 var contactProfileButtonZone = doc.createElement('div');
                 contactProfileButtonZone.innerHTML = '<div class="main_new_contact_block clearfix" id="newContact">\
                 <div class="Del_Close_Save clearfix">\
-                    <button class="del" type="button" id="del">Delete</button>\
-                    <button class="save" type="button" id="save">Save</button>\
-                    <button class="close" type="button" id="close">Close</button>\
+                    <button class="del" type="button" id="del"><i class="fa fa-trash-o" aria-hidden="true" style="font-size: 30px; color: red"></i></button>\
+                    <button class="save" type="button" id="save">Save <i class="fa fa-check" aria-hidden="true"></i></button>\
+                    <button class="close" type="button" id="close">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>\
                 </div>\
                 <div class="clearfix" id="nameZone">\
                 </div>\
@@ -434,16 +434,16 @@
                 deleteContact.addEventListener('click', function () {
                     localStorage.removeItem(tmpCallBlock);
                     let tmpCK = JSON.parse(localStorage.getItem('controlKey'));
-                        console.log('Массив из lS controlKey ['+tmpCK +']');
+                        // console.log('Массив из lS controlKey ['+tmpCK +']');
                     tmpCK.splice(tmpCount, 1);  //удаляем элемент массива
-                        console.log('Удаляемый элемент '+tmpCallBlock);
-                        console.log('Массив после удаления элемента ['+tmpCK+']');
-                        console.log('Длина массива '+tmpCK.length);
+                        // console.log('Удаляемый элемент '+tmpCallBlock);
+                        // console.log('Массив после удаления элемента ['+tmpCK+']');
+                        // console.log('Длина массива '+tmpCK.length);
                     localStorage.setItem('controlKey', JSON.stringify(tmpCK));
-                    if (tmpCK.length === 1) {
-                        localStorage.removeItem("controlKey");
-                            console.log('ControlKey removed');
-                    };
+                    // if (tmpCK.length === 1) {
+                    //     localStorage.removeItem("controlKey");
+                    //         console.log('ControlKey removed');
+                    // };
 
                     let child = doc.getElementById(tmpCallBlock);
                     parent_block.removeChild(child);
