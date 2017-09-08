@@ -512,10 +512,10 @@
     // ПОИСК
     search.addEventListener("input", function () {
         for (var i = 0; i<control.length; i++){
-            let blockContent = doc.getElementById(control[i]).innerText;
-            doc.getElementById(control[i]).style.display = '';
+            let blockContent = document.getElementById(i).innerText;
+            doc.getElementById(i).style.display = '';
             if (blockContent.toLowerCase().indexOf(search.value.toLowerCase()) === -1){
-                doc.getElementById(control[i]).style.display = 'none';
+                doc.getElementById(i).style.display = 'none';
             }
         }
     });
